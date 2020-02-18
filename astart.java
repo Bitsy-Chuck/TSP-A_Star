@@ -3,7 +3,6 @@ import java.io.*;
 class node1 {
 	int cityNo;
 	int gcost;
-
 	node1(int cno, int c){
 		this.cityNo = cno;
 		this.gcost = c;
