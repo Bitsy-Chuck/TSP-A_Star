@@ -3,6 +3,7 @@ import java.io.*;
 class node1 {
 	int cityNo;
 	int gcost;
+
 	node1(int cno, int c){
 		this.cityNo = cno;
 		this.gcost = c;
@@ -35,10 +36,12 @@ class astar{
     this.findanswer(cost, noOfCities, start);
   }
   void printPath(){
+		System.out.println();
     for(int i = 0; i < this.path.length; i++){
       System.out.print(path[i] + " ");
     }
-    System.out.print("(" + this.costInc + ")");
+    System.out.print("\t(" + this.costInc + ")");
+		System.out.println();
   }
   private void findanswer(int[][] cost, int noOfCities, int start){
     int curr= start;
@@ -49,6 +52,8 @@ class astar{
         if((i!=curr) && (cost[curr][i]!= Integer.MAX_VALUE)){
           if(visited[i]==0){
             int hn=0;//should change the value
+						minSpanTree tempSpanTree = new minSpanTree(cost, visited, noOfCities);
+						hn= tempSpanTree.getTotalCost();
             node1 temp= new node1(i, (cost[i][curr]+ hn));
             openList.add(temp);
           }
@@ -80,7 +85,8 @@ class astar{
 			costInc = (int) tempTotalCost;
 		System.out.println("\n");
 		for(int i = 0; i < this.visited.length; i++){
-			System.out.printf("%d ( %d )", i, vistied[i]);
+			System.out.printf("%d ( %d )\t", i, visited[i]);
+		System.out.println();
 		}
     printPath();
   }
